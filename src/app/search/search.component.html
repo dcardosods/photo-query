@@ -3,5 +3,8 @@
 <ul>
   <li *ngFor="let result of results">
     <img [src]="result.urls.thumb" [alt]="result.description" />
+    <button type="button" (click)="addToFavorites(result)">
+      Add to favorites
+    </button>
   </li>
 </ul>

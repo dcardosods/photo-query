@@ -1,1 +1,13 @@
-<p>favorites works!</p>
+<h2>My Favorites</h2>
+
+<button type="button" (click)="createList()">Create list</button>
+
+<ul>
+  <li *ngFor="let favorite of (favorites$ | async)">
+    <h3>{{ favorite.name }}</h3>
+    <p>{{ favorite.description }}</p>
+    <div *ngFor="let photo of favorite.photos">
+      <img [src]="photo.urls.thumb" [alt]="photo.description" />
+    </div>
+  </li>
+</ul>
