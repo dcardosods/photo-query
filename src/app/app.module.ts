@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SearchModule } from './search/search.module';
 import { FavoritesModule } from './favorites/favorites.module';
@@ -8,7 +9,14 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SearchModule, FavoritesModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+
+    AppRoutingModule,
+    SearchModule,
+    FavoritesModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

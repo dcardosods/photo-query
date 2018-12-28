@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  unsplashApiUrl: 'https://api.unsplash.com',
+  unsplashAccessKey: 'UNSPLASH_ACCESS_KEY',
 };
