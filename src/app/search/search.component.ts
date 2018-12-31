@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { SearchService } from './search.service';
 import { AddFavoritePhoto } from '../favorites/favorites.actions';
+import { ExecuteSearch } from './search.actions';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,8 @@ import { AddFavoritePhoto } from '../favorites/favorites.actions';
 })
 export class SearchComponent implements OnInit {
   searchTerm$ = new Subject<string>();
-  results: any[];
+  lastSearchTerm$: Observable<string>;
+  results$: Observable<any[]>;
 
   constructor(
     private searchService: SearchService,
@@ -20,9 +22,14 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.searchService.search(this.searchTerm$).subscribe(results => {
-      this.results = results;
+    this.searchTerm$.subscribe(searchTerm => {
+      if (searchTerm) {
+        this.store.dispatch(new ExecuteSearch({ searchTerm }));
+      }
     });
+
+    this.lastSearchTerm$ = this.store.select('search', 'searchTerm');
+    this.results$ = this.store.select('search', 'results');
   }
 
   addToFavorites(photo) {

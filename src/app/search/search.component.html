@@ -6,9 +6,12 @@
     class="border w-full p-2 shadow"
   />
 </div>
+<p>
+  Results for: <code>{{ lastSearchTerm$ | async }}</code>
+</p>
 <div class="py-4 flex flex-wrap">
   <app-photo-card
-    *ngFor="let result of results"
+    *ngFor="let result of (results$ | async)"
     [photo]="result"
     [showDetails]="true"
     (selected)="addToFavorites($event)"
