@@ -1,13 +1,22 @@
 <h2>My Favorites</h2>
 
-<button type="button" (click)="createList()">Create list</button>
+<button
+  type="button"
+  (click)="createList()"
+  class="bg-green hover:bg-green-dark text-white py-1 px-2"
+>
+  Create list
+</button>
 
-<ul>
-  <li *ngFor="let favorite of (favorites$ | async)">
-    <h3>{{ favorite.name }}</h3>
-    <p>{{ favorite.description }}</p>
-    <div *ngFor="let photo of favorite.photos">
-      <img [src]="photo.urls.thumb" [alt]="photo.description" />
-    </div>
-  </li>
-</ul>
+<div *ngFor="let favorite of (favorites$ | async)" class="pt-4 border-b">
+  <h3>{{ favorite.name }}</h3>
+  <p>{{ favorite.description }}</p>
+
+  <div class="py-4 flex flex-wrap" *ngIf="favorite.photos.length">
+    <app-photo-card
+      *ngFor="let photo of favorite.photos"
+      [photo]="photo"
+      class="m-2"
+    ></app-photo-card>
+  </div>
+</div>

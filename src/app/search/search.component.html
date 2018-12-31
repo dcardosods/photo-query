@@ -1,10 +1,17 @@
-<input type="text" (keyup)="searchTerm$.next($event.target.value)" />
-
-<ul>
-  <li *ngFor="let result of results">
-    <img [src]="result.urls.thumb" [alt]="result.description" />
-    <button type="button" (click)="addToFavorites(result)">
-      Add to favorites
-    </button>
-  </li>
-</ul>
+<div class="py-4">
+  <input
+    type="text"
+    placeholder="Search photos..."
+    (keyup)="searchTerm$.next($event.target.value)"
+    class="border w-full p-2 shadow"
+  />
+</div>
+<div class="py-4 flex flex-wrap">
+  <app-photo-card
+    *ngFor="let result of results"
+    [photo]="result"
+    [showDetails]="true"
+    (selected)="addToFavorites($event)"
+    class="m-2"
+  ></app-photo-card>
+</div>

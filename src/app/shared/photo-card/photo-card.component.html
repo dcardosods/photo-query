@@ -1,0 +1,21 @@
+<div class="p-2 h-full relative shadow flex flex-col justify-center photo-card">
+  <div><img [src]="photo.urls.thumb" [alt]="photo.description" /></div>
+  <div
+    *ngIf="showDetails"
+    class="absolute pin-b bg-white w-full -ml-2 p-2 text-right photo-card__details"
+  >
+    <div class="text-xs mb-1">
+      Photo by
+      <a [href]="photo.user.links.html" target="_blank">
+        {{ photo.user.name }}
+      </a>
+    </div>
+    <button
+      type="button"
+      (click)="onSelected(photo)"
+      class="bg-blue hover:bg-blue-dark text-white py-1 px-2"
+    >
+      Add to favorites
+    </button>
+  </div>
+</div>

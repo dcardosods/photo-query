@@ -1,0 +1,11 @@
+.photo-card {
+  .photo-card__details {
+    display: none;
+  }
+
+  &:hover {
+    & .photo-card__details {
+      display: block;
+    }
+  }
+}
