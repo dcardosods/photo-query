@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 import { SharedModule } from '../shared/shared.module';
 import { SearchEffects } from './search.effects';
@@ -16,6 +17,8 @@ import * as fromSearch from './search.reducer';
     SharedModule,
     StoreModule.forFeature('search', fromSearch.reducer),
     EffectsModule.forFeature([SearchEffects]),
+    NgxSmartModalModule.forChild(),
+
     SearchRoutingModule,
   ],
 })
