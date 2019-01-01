@@ -8,7 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PhotoCardComponent implements OnInit {
   @Input() photo: any;
   @Input() showDetails = false;
+  @Input() enableDownload = false;
   @Output() selected = new EventEmitter<any>();
+  @Output() downloaded = new EventEmitter<any>();
 
   constructor() {}
 
@@ -16,5 +18,10 @@ export class PhotoCardComponent implements OnInit {
 
   onSelected(photo: any) {
     this.selected.emit(photo);
+  }
+
+  onDownloaded($event, photo) {
+    $event.preventDefault();
+    this.downloaded.emit(photo);
   }
 }

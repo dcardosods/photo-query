@@ -1,5 +1,15 @@
 <div class="p-2 h-full relative shadow flex flex-col justify-center photo-card">
-  <div><img [src]="photo.urls.thumb" [alt]="photo.description" /></div>
+  <a
+    [href]="photo.urls.full"
+    target="_blank"
+    (click)="onDownloaded($event, photo)"
+    *ngIf="enableDownload"
+  >
+    <img [src]="photo.urls.thumb" [alt]="photo.description" />
+  </a>
+  <div *ngIf="!enableDownload">
+    <img [src]="photo.urls.thumb" [alt]="photo.description" />
+  </div>
   <div
     *ngIf="showDetails"
     class="absolute pin-b bg-white w-full -ml-2 p-2 text-right photo-card__details"

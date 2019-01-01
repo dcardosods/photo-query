@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   searchTerm$ = new Subject<string>();
   lastSearchTerm$: Observable<string>;
   results$: Observable<any[]>;
+  favorites: any;
 
   constructor(
     private searchService: SearchService,
@@ -30,12 +31,15 @@ export class SearchComponent implements OnInit {
 
     this.lastSearchTerm$ = this.store.select('search', 'searchTerm');
     this.results$ = this.store.select('search', 'results');
+    this.store.select('favorites', 'list').subscribe(favorites => {
+      this.favorites = favorites;
+    });
   }
 
   addToFavorites(photo) {
     this.store.dispatch(
       new AddFavoritePhoto({
-        listId: 'test-1',
+        listId: this.favorites[0].id,
         photo,
       })
     );

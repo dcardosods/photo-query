@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import { CreateFavoritesList } from './favorites.actions';
+import {
+  CreateFavoritesList,
+  DownloadFavoritePhoto,
+} from './favorites.actions';
 import { State } from './favorites.reducer';
 import { FavoritesList } from './favorites-list';
 
@@ -24,5 +27,9 @@ export class FavoritesComponent implements OnInit {
     this.store.dispatch(
       new CreateFavoritesList(new FavoritesList('Test 1', 'Test 1 desc'))
     );
+  }
+
+  downloadPhoto(photo) {
+    this.store.dispatch(new DownloadFavoritePhoto({ photo }));
   }
 }

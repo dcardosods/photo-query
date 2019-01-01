@@ -5,6 +5,8 @@ import { FavoritesList } from './favorites-list';
 export enum FavoritesActionTypes {
   CreateFavoritesList = '[Favorites] Create Favorites List',
   AddFavoritePhoto = '[Favorites List] Add Favorite Photo',
+  DownloadFavoritePhoto = '[Favorites List] Download Favorite Photo',
+  DownloadOk = '[Favorites List] Download Ok',
 }
 
 export class CreateFavoritesList implements Action {
@@ -18,10 +20,26 @@ export class AddFavoritePhoto implements Action {
 
   constructor(
     public payload: {
-      listId: string;
+      listId: number;
       photo: any;
     }
   ) {}
 }
 
-export type FavoritesActions = CreateFavoritesList | AddFavoritePhoto;
+export class DownloadFavoritePhoto implements Action {
+  readonly type = FavoritesActionTypes.DownloadFavoritePhoto;
+
+  constructor(public payload: { photo: any }) {}
+}
+
+export class DownloadOk implements Action {
+  readonly type = FavoritesActionTypes.DownloadOk;
+
+  constructor(public payload: { photo: any }) {}
+}
+
+export type FavoritesActions =
+  | CreateFavoritesList
+  | AddFavoritePhoto
+  | DownloadFavoritePhoto
+  | DownloadOk;

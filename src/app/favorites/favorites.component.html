@@ -16,6 +16,8 @@
     <app-photo-card
       *ngFor="let photo of favorite.photos"
       [photo]="photo"
+      [enableDownload]="true"
+      (downloaded)="downloadPhoto($event)"
       class="m-2"
     ></app-photo-card>
   </div>

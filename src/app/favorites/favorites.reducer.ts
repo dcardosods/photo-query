@@ -15,10 +15,7 @@ export function reducer(
 ): State {
   switch (action.type) {
     case favorites.FavoritesActionTypes.CreateFavoritesList: {
-      return {
-        ...state,
-        list: [...state.list, action.payload],
-      };
+      return { ...state, list: [...state.list, action.payload] };
     }
 
     case favorites.FavoritesActionTypes.AddFavoritePhoto: {
