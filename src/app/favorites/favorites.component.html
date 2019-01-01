@@ -9,8 +9,30 @@
 </button>
 
 <div *ngFor="let favorite of (favorites$ | async)" class="pt-4 border-b">
-  <h3>{{ favorite.name }}</h3>
-  <p>{{ favorite.description }}</p>
+  <div
+    *ngIf="showEditForm !== favorite.id"
+    class="flex justify-between align-center"
+  >
+    <div>
+      <h3>{{ favorite.name }}</h3>
+      <p>{{ favorite.description }}</p>
+    </div>
+    <div>
+      <button
+        type="button"
+        (click)="toggleEditForm(favorite.id)"
+        class="bg-grey hover:bg-grey-dark text-white py-1 px-2"
+      >
+        Edit
+      </button>
+    </div>
+  </div>
+  <app-favorite-form
+    [favorite]="favorite"
+    [submitText]="'Confirm edit'"
+    (submitted)="editList($event)"
+    *ngIf="showEditForm === favorite.id"
+  ></app-favorite-form>
 
   <div class="py-4 flex flex-wrap" *ngIf="favorite.photos.length">
     <app-photo-card

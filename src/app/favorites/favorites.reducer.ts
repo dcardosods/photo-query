@@ -18,6 +18,23 @@ export function reducer(
       return { ...state, list: [...state.list, action.payload] };
     }
 
+    case favorites.FavoritesActionTypes.EditFavoritesList: {
+      return {
+        ...state,
+        list: state.list.map(list => {
+          if (list.id === action.payload.listId) {
+            if (action.payload.name) {
+              list.name = action.payload.name;
+            }
+            if (action.payload.description) {
+              list.description = action.payload.description;
+            }
+          }
+          return list;
+        }),
+      };
+    }
+
     case favorites.FavoritesActionTypes.AddFavoritePhoto: {
       return {
         ...state,

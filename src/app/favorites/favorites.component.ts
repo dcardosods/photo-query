@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
   CreateFavoritesList,
+  EditFavoritesList,
   DownloadFavoritePhoto,
 } from './favorites.actions';
 import { State } from './favorites.reducer';
@@ -16,6 +17,7 @@ import { FavoritesList } from './favorites-list';
 })
 export class FavoritesComponent implements OnInit {
   favorites$: Observable<any[]>;
+  showEditForm = 0;
 
   constructor(private store: Store<State>) {}
 
@@ -29,7 +31,21 @@ export class FavoritesComponent implements OnInit {
     );
   }
 
+  editList(listId, fields) {
+    this.store.dispatch(
+      new EditFavoritesList({
+        listId,
+        ...fields,
+      })
+    );
+    this.showEditForm = 0;
+  }
+
   downloadPhoto(photo) {
     this.store.dispatch(new DownloadFavoritePhoto({ photo }));
+  }
+
+  toggleEditForm(listId: number) {
+    this.showEditForm = listId;
   }
 }

@@ -1,0 +1,42 @@
+<form #favoriteForm="ngForm" (submit)="onSubmit(favorite)">
+  <div class="mb-4">
+    <label for="name" class="block text-grey-darker text-sm font-bold mb-2">
+      Name
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      [(ngModel)]="favorite.name"
+      required
+      class="border w-full p-2 shadow"
+    />
+  </div>
+
+  <div class="mb-4">
+    <label
+      for="description"
+      class="block text-grey-darker text-sm font-bold mb-2"
+    >
+      Description
+    </label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      [(ngModel)]="favorite.description"
+      required
+      class="border w-full p-2 shadow"
+    />
+  </div>
+
+  <div class="mb-4 text-right">
+    <button
+      type="submit"
+      [disabled]="!favoriteForm.form.valid"
+      class="bg-blue hover:bg-blue-dark text-white py-1 px-2"
+    >
+      {{ submitText }}
+    </button>
+  </div>
+</form>
