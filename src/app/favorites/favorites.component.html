@@ -1,6 +1,6 @@
-<h2 class="mb-4">My Favorites</h2>
+<h2 class="mb-4">Favorites</h2>
 
-<div *ngFor="let favorite of (favorites$ | async)" class="pt-4 border-b">
+<div *ngFor="let favorite of (favorites$ | async)" class="my-2 border-b">
   <div
     *ngIf="showEditForm !== favorite.id"
     class="flex justify-between align-center"

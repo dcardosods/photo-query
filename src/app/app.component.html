@@ -1,10 +1,14 @@
 <div class="container mx-auto">
-  <h1>{{ title }}</h1>
+  <div class="flex justify-between items-center mb-8">
+    <a routerLink="/" class="no-underline hover:no-underline">
+      <h1>{{ title }}</h1>
+    </a>
 
-  <ul>
-    <li><a routerLink="/">Search</a></li>
-    <li><a routerLink="/favorites">Favorites</a></li>
-  </ul>
+    <ul class="list-reset flex justify-end">
+      <li><a routerLink="/search">Search</a></li>
+      <li class="ml-4"><a routerLink="/favorites">Favorites</a></li>
+    </ul>
+  </div>
 
   <router-outlet></router-outlet>
 </div>
