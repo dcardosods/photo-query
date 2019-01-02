@@ -17,15 +17,15 @@ Requirements:
 
 TODO:
 
-- [] Display loader while fetching results
-- [] Display no results message
-- [] Handle API requests errors
-- [] Add validation to favorite form
-- [] Fix/implement unit tests
-- [] Fix/implement e2e tests
-- [] Allow for easier configuration of environment variables. Follow discussion at https://github.com/angular/angular-cli/issues/4318
-  - [] Try https://github.com/GaryB432/venv
-  - [] Try https://github.com/kopz9999/ng-node-environment
+- [ ] Display loader while fetching results
+- [ ] Display no results message
+- [ ] Handle API requests errors
+- [ ] Add validation to favorite form
+- [ ] Fix/implement unit tests
+- [ ] Fix/implement e2e tests
+- [ ] Allow for easier configuration of environment variables. Follow discussion at https://github.com/angular/angular-cli/issues/4318
+  - [ ] Try https://github.com/GaryB432/venv
+  - [ ] Try https://github.com/kopz9999/ng-node-environment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
