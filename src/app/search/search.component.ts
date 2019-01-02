@@ -4,9 +4,12 @@ import { Store } from '@ngrx/store';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 import { SearchService } from './search.service';
-import { AddFavoritePhoto } from '../favorites/favorites.actions';
+import {
+  AddFavoritePhoto,
+  CreateFavoritesList,
+} from '../favorites/favorites.actions';
 import { ExecuteSearch } from './search.actions';
-import { FavoritesList } from '../favorites/favorites-list';
+import { Favorite } from '../shared/favorite';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -18,8 +21,9 @@ export class SearchComponent implements OnInit {
   searchTerm$ = new Subject<string>();
   lastSearchTerm$: Observable<string>;
   results$: Observable<any[]>;
-  favorites$: Observable<FavoritesList[]>;
-  selectedFavorite: FavoritesList;
+  favorites$: Observable<Favorite[]>;
+  selectedFavorite: Favorite;
+  showAddForm = false;
 
   constructor(
     private searchService: SearchService,
@@ -49,15 +53,25 @@ export class SearchComponent implements OnInit {
     this.modalService.setModalData(data, 'favoritesModal');
   }
 
-  addToFavorites(photo) {
-    if (this.selectedFavorite) {
+  addToFavorites(favorite, photo, shouldCreate = false) {
+    if (shouldCreate) {
+      this.store.dispatch(new CreateFavoritesList(favorite));
+    }
+
+    if (favorite) {
       this.store.dispatch(
         new AddFavoritePhoto({
-          listId: this.selectedFavorite.id,
+          listId: favorite.id,
           photo,
         })
       );
       this.modalService.close('favoritesModal');
+      this.modalService.resetModalData('favoritesModal');
+      this.showAddForm = false;
     }
+  }
+
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
   }
 }

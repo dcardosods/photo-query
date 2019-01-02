@@ -2,13 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import {
-  CreateFavoritesList,
-  EditFavoritesList,
-  DownloadFavoritePhoto,
-} from './favorites.actions';
+import { EditFavoritesList, DownloadFavoritePhoto } from './favorites.actions';
 import { State } from './favorites.reducer';
-import { FavoritesList } from './favorites-list';
+import { Favorite } from '../shared/favorite';
 
 @Component({
   selector: 'app-favorites',
@@ -23,12 +19,6 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit() {
     this.favorites$ = this.store.select('favorites', 'list');
-  }
-
-  createList() {
-    this.store.dispatch(
-      new CreateFavoritesList(new FavoritesList('Test 1', 'Test 1 desc'))
-    );
   }
 
   editList(listId, fields) {

@@ -1,12 +1,4 @@
-<h2>My Favorites</h2>
-
-<button
-  type="button"
-  (click)="createList()"
-  class="bg-green hover:bg-green-dark text-white py-1 px-2"
->
-  Create list
-</button>
+<h2 class="mb-4">My Favorites</h2>
 
 <div *ngFor="let favorite of (favorites$ | async)" class="pt-4 border-b">
   <div

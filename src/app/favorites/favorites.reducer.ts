@@ -1,8 +1,8 @@
 import * as favorites from './favorites.actions';
-import { FavoritesList } from './favorites-list';
+import { Favorite } from '../shared/favorite';
 
 export interface State {
-  list: FavoritesList[];
+  list: Favorite[];
 }
 
 export const initialState: State = {

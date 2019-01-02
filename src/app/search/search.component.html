@@ -26,28 +26,50 @@
     <label for="favorite" class="block text-grey-darker text-sm font-bold mb-2">
       Existing list
     </label>
-    <select
-      id="favorite"
-      name="favorite"
-      [(ngModel)]="selectedFavorite"
-      class="border w-full p-2 shadow"
-    >
-      <option
-        *ngFor="let favorite of (favorites$ | async)"
-        [ngValue]="favorite"
+
+    <div class="flex justify-between">
+      <select
+        id="favorite"
+        name="favorite"
+        [(ngModel)]="selectedFavorite"
+        [disabled]="!(favorites$ | async).length"
+        class="border p-2 shadow w-3/5"
       >
-        {{ favorite.name }}
-      </option>
-    </select>
+        <option
+          *ngFor="let favorite of (favorites$ | async)"
+          [ngValue]="favorite"
+        >
+          {{ favorite.name }}
+        </option>
+      </select>
+
+      <button
+        type="button"
+        (click)="addToFavorites(selectedFavorite, favoritesModal.getData())"
+        [disabled]="!selectedFavorite"
+        *ngIf="!showAddForm"
+        class="bg-blue hover:bg-blue-dark text-white py-1 px-2"
+      >
+        Confirm
+      </button>
+    </div>
   </div>
 
-  <div class="text-right">
+  <div class="mb-4">
+    <span class="mb-2"> or </span>
     <button
       type="button"
-      (click)="addToFavorites(favoritesModal.getData())"
-      class="bg-blue hover:bg-blue-dark text-white py-1 px-2"
+      (click)="toggleAddForm()"
+      class="bg-green hover:bg-green-dark text-white py-1 px-2"
     >
-      Confirm
+      Create new
     </button>
+  </div>
+
+  <div *ngIf="showAddForm">
+    <app-favorite-form
+      [submitText]="'Confirm'"
+      (submitted)="addToFavorites($event, favoritesModal.getData(), true)"
+    ></app-favorite-form>
   </div>
 </ngx-smart-modal>

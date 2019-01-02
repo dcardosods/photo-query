@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { FavoritesList } from '../favorites-list';
+import { Favorite } from '../favorite';
 
 @Component({
   selector: 'app-favorite-form',
@@ -8,15 +8,16 @@ import { FavoritesList } from '../favorites-list';
   styleUrls: ['./favorite-form.component.scss'],
 })
 export class FavoriteFormComponent implements OnInit {
-  @Input() favorite: FavoritesList;
+  @Input() favorite = new Favorite(null, null);
   @Input() submitText = 'Submit';
-  @Output() submitted = new EventEmitter<FavoritesList>();
+  @Output() submitted = new EventEmitter<Favorite>();
 
   constructor() {}
 
   ngOnInit() {}
 
-  onSubmit(favorite: FavoritesList) {
+  onSubmit(favorite: Favorite) {
     this.submitted.emit(favorite);
+    this.favorite = new Favorite(null, null);
   }
 }

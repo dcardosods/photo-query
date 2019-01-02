@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { FavoritesList } from './favorites-list';
+import { Favorite } from '../shared/favorite';
 
 export enum FavoritesActionTypes {
   CreateFavoritesList = '[Favorites] Create Favorites List',
@@ -13,7 +13,7 @@ export enum FavoritesActionTypes {
 export class CreateFavoritesList implements Action {
   readonly type = FavoritesActionTypes.CreateFavoritesList;
 
-  constructor(public payload: FavoritesList) {}
+  constructor(public payload: Favorite) {}
 }
 
 export class EditFavoritesList implements Action {

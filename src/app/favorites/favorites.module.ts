@@ -8,10 +8,9 @@ import { FavoritesComponent } from './favorites.component';
 import * as fromFavorites from './favorites.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { FavoritesEffects } from './favorites.effects';
-import { FavoriteFormComponent } from './favorite-form/favorite-form.component';
 
 @NgModule({
-  declarations: [FavoritesComponent, FavoriteFormComponent],
+  declarations: [FavoritesComponent],
   imports: [
     CommonModule,
     SharedModule,
