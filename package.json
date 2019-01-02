@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint"
+    "precommit": "run-s format:fix lint",
+    "deploy": "ng build --prod --base-href 'https://dcardosods.github.io/photo-query/' && gh-pages -d dist/photo-query"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
