@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --extra-webpack-config webpack.partial.js",
+    "build": "ng build --extra-webpack-config webpack.partial.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:fix": "pretty-quick --staged",
     "precommit": "run-s format:fix lint",
-    "deploy": "ng build --prod --base-href 'https://dcardosods.github.io/photo-query/' && gh-pages -d dist/photo-query"
+    "deploy": "npm run build -- --prod --base-href 'https://dcardosods.github.io/photo-query/' && gh-pages -d dist/photo-query"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "@ngrx/store": "^7.0.0",
     "@ngrx/store-devtools": "^7.0.0",
     "core-js": "^2.5.4",
+    "ngx-build-plus": "^7.7.2",
     "ngx-smart-modal": "^7.1.0",
     "rxjs": "~6.3.3",
     "tailwindcss": "^0.7.3",

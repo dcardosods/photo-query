@@ -23,9 +23,10 @@ TODO:
 - [ ] Add validation to favorite form
 - [ ] Fix/implement unit tests
 - [ ] Fix/implement e2e tests
-- [ ] Allow for easier configuration of environment variables. Follow discussion at https://github.com/angular/angular-cli/issues/4318
-  - [ ] Try https://github.com/GaryB432/venv
-  - [ ] Try https://github.com/kopz9999/ng-node-environment
+- [x] Allow for easier configuration of environment variables. Follow discussion at https://github.com/angular/angular-cli/issues/4318
+  - ~~[ ] Try https://github.com/GaryB432/venv~~
+  - ~~[ ] Try https://github.com/kopz9999/ng-node-environment~~
+  - PS: Ended up using https://github.com/manfredsteyer/ngx-build-plus to set build time environment variables
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
@@ -33,12 +34,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Create an Unsplash application https://unsplash.com/oauth/applications.
 
-Replace `UNSPLASH_ACCESS_KEY` with your Unsplash access key in `src/environments/environment.*`.
+Set the value of your Unsplash access key to `UNSPLASH_ACCESS_KEY` enviroment variable on your terminal, before running/building the app.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

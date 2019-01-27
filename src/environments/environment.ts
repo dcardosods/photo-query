@@ -1,11 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+declare const UNSPLASH_ACCESS_KEY: string;
 
 export const environment = {
   production: false,
   unsplashApiUrl: 'https://api.unsplash.com',
-  unsplashAccessKey: 'UNSPLASH_ACCESS_KEY',
+  unsplashAccessKey: UNSPLASH_ACCESS_KEY,
 };
 
 /*
